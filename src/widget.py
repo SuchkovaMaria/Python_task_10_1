@@ -30,5 +30,6 @@ def get_date(date_time: Union[str])-> Union[str]:
     reverse_date = separation_date_time[0].split(sep='-', maxsplit=3)
     coup_date = reverse_date[::-1]
     date = '.'.join(coup_date)
+
     return date
 
