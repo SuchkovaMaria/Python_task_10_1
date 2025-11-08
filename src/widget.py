@@ -25,6 +25,7 @@ def mask_account_card(card: Union[str])-> Union[str]:
 
 def get_date(date_time: Union[str])-> Union[str]:
     """Функция для вывода даты"""
+
     separation_date_time = date_time.split(sep='T', maxsplit=1)
     reverse_date = separation_date_time[0].split(sep='-', maxsplit=3)
     coup_date = reverse_date[::-1]
