@@ -51,8 +51,4 @@ def get_mask_card_number(number_card: Union[str]) -> Union[str]:
     return mask_card_number_str
 
 
-i = get_mask_card_number("7000792289606361")
-print(i)
 
-x = get_mask_account("73654108430135874305")
-print(x)
