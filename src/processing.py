@@ -16,4 +16,10 @@ def sort_by_date(list_of_dict: Union[list], sort_order: Union[bool] = True) -> U
     sort_list = sorted(list_of_dict, key=lambda x: x["date"], reverse=sort_order)
     return sort_list
 
-print(sort_by_date(1,2,))
+
+print(
+    sort_by_date(
+        1,
+        2,
+    )
+)
