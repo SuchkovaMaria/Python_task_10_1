@@ -16,6 +16,6 @@ def filter_by_state(
 def sort_by_date(
     list_of_dict: Union[list[dict[str, int]]], sort_order: Union[bool] = True
 ) -> Union[list[dict[str, int]]]:
-    """Функция сортирует список словарей по дате (по умолчанию фильтрует по убываю даты)"""
+    """Функция сортирует список словарей по дате (по умолчанию фильтрует по убыванию даты)"""
     sort_list = sorted(list_of_dict, key=lambda x: x["date"], reverse=sort_order)
     return sort_list
