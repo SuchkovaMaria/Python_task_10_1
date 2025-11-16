@@ -49,6 +49,3 @@ def get_mask_card_number(number_card: Union[str]) -> Union[str]:
 
     mask_card_number_str = "".join(mask_card_number)
     return mask_card_number_str
-
-
-
