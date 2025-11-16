@@ -1,7 +1,7 @@
 from typing import Union
 
 
-def filter_by_state(list_of_dict: Union[list], entered_state: Union[str] = "EXECUTED") -> Union[list]:
+def filter_by_state(list_of_dict: Union[list[dict[str,int]]], entered_state: Union[str] = "EXECUTED") -> Union[list[dict[str,int]]]:
     """Функуия фильтрует список словарей и выводет выполненые (выводит со статусом выполненые)"""
     filter_list = []
     for i_list in list_of_dict:
@@ -11,7 +11,7 @@ def filter_by_state(list_of_dict: Union[list], entered_state: Union[str] = "EXEC
     return filter_list
 
 
-def sort_by_date(list_of_dict: Union[list], sort_order: Union[bool] = True) -> Union[list]:
+def sort_by_date(list_of_dict: Union[list[dict[str,int]]], sort_order: Union[bool] = True) -> Union[list[dict[str,int]]]:
     """Функция сортирует список словарей по дате (по умолчанию выводит по убыванию даты)"""
     sort_list = sorted(list_of_dict, key=lambda x: x["date"], reverse=sort_order)
     return sort_list
