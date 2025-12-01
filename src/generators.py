@@ -10,7 +10,7 @@ def filter_by_currency(
 
     lenght_transactions = len(transactions)
     if lenght_transactions == 0:
-        return ("Список транзакций пуст")
+        yield "Список транзакций пуст"
     else:
         for i_dict in transactions:
             for key, value in i_dict.items():
@@ -21,9 +21,9 @@ def filter_by_currency(
                                 if key_currency == "name" and value_currency == valuta:
                                     list_dict_1.append(i_dict)
     if len(list_dict_1) == 0:
-        return f"Отсутствуют транзакции с валютой - {valuta}"
+        yield f"Отсутствуют транзакции с валютой - {valuta}"
     else:
-        return  list_dict_1
+        yield list_dict_1
 
 
 def transaction_descriptions(transactions: Union[list[dict[str, int, dict]]]) -> Union[str]:
@@ -45,9 +45,9 @@ def card_number_generator(start: Union[int], stop: Union[int]) -> Union[str]:
     """Генератор номеров карт"""
 
     try:
-        if isinstance(start, int) == True and isinstance(stop, int) == True:
+        if isinstance(start, int) is True and isinstance(stop, int) is True:
             if start < stop:
-                for num in range(start, stop+1):
+                for num in range(start, stop + 1):
                     numbers = str(num).zfill(16)
                     num_card = numbers[:4] + " " + numbers[4:8] + " " + numbers[8:12] + " " + numbers[12:]
                     yield num_card
@@ -57,5 +57,3 @@ def card_number_generator(start: Union[int], stop: Union[int]) -> Union[str]:
             yield "Введите целые числа"
     except StopIteration:
         yield "Итерации завершены"
-
-

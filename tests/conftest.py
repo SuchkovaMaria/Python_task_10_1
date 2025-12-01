@@ -136,6 +136,7 @@ def transactions_2():
         },
     ]
 
+
 @pytest.fixture
 def transactions_3():
     return [

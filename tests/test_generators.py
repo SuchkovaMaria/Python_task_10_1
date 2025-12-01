@@ -1,9 +1,10 @@
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 import pytest
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency_1(transactions_1):
-    assert filter_by_currency(transactions_1, "USD") == [
+    assert next(filter_by_currency(transactions_1, "USD")) == [
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -26,11 +27,11 @@ def test_filter_by_currency_1(transactions_1):
 
 
 def test_filter_by_currency_2(transactions_2):
-    assert filter_by_currency(transactions_2, "USD") == "Отсутствуют транзакции с валютой - USD"
+    assert next(filter_by_currency(transactions_2, "USD")) == "Отсутствуют транзакции с валютой - USD"
 
 
 def test_filter_by_currency_3():
-    assert filter_by_currency([], "USD") == "Список транзакций пуст"
+    assert next(filter_by_currency([], "USD")) == "Список транзакций пуст"
 
 
 def test_transaction_descriptions_1(transactions_3):
@@ -41,13 +42,13 @@ def test_transaction_descriptions_2():
     assert next(transaction_descriptions([])) == "Список транзакций пуст"
 
 
-def test_card_number_generator_1():
-    assert next(card_number_generator(1, 5)) == "0000 0000 0000 0001"
-
-
-def test_card_number_generator_2():
-    assert next(card_number_generator(6, 1)) == "Начальное значение должно быть меньше конечного"
-
-
-def test_card_number_generator_3():
-    assert next(card_number_generator("1", 3)) == "Введите целые числа"
+@pytest.mark.parametrize(
+    "start, stop, expected",
+    [
+        (1, 5, "0000 0000 0000 0001"),
+        (6, 1, "Начальное значение должно быть меньше конечного"),
+        ("1", 3, "Введите целые числа"),
+    ],
+)
+def test_card_number_generator(start, stop, expected):
+    assert next(card_number_generator(start, stop)) == expected
