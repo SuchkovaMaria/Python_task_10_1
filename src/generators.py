@@ -1,4 +1,5 @@
 from typing import Union
+from typing import Generator
 
 
 def filter_by_currency(
@@ -20,10 +21,9 @@ def filter_by_currency(
                             for key_currency, value_currency in value_oper.items():
                                 if key_currency == "name" and value_currency == valuta:
                                     list_dict_1.append(i_dict)
+                                    yield list_dict_1
     if len(list_dict_1) == 0:
         yield f"Отсутствуют транзакции с валютой - {valuta}"
-    else:
-        yield list_dict_1
 
 
 def transaction_descriptions(transactions: Union[list[dict[str, int, dict]]]) -> Union[str]:
@@ -41,7 +41,7 @@ def transaction_descriptions(transactions: Union[list[dict[str, int, dict]]]) ->
         yield "Итерации завершены"
 
 
-def card_number_generator(start: Union[int], stop: Union[int]) -> Union[str]:
+def card_number_generator(start: Union[int], stop: Union[int]) -> Union[Generator[str, None, None]]:
     """Генератор номеров карт"""
 
     try:
