@@ -35,10 +35,8 @@ def convertions_currency(currency_from, amount):
     payload = {}
     headers = {"apikey": API_KEY}
 
-    print("Calling API with URL:", url)
     response = requests.request("GET", url, headers=headers, data=payload)
     response_json = response.json()
-    print("Response JSON:", response_json)
     result: float = round(response_json['result'], 1)
 
     return result
