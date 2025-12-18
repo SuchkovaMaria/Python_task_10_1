@@ -1,3 +1,4 @@
-2025-12-18 12:39:37,074 - utils - DEBUG: Функция открыла файл по  пути: C:\Users\Rabota\PycharmProjects\Python_task\tests\..\data\operations.json
-2025-12-18 12:39:37,075 - utils - INFO: Данные из файла переведены в Python-объект
-2025-12-18 12:39:37,076 - utils - DEBUG: Функция возвращает список транзакций
+2025-12-18 13:17:07,688 - utils - DEBUG: Функция открыла файл по  пути: C:\Users\Rabota\PycharmProjects\Python_task\tests\..\data\operations.json
+2025-12-18 13:17:07,689 - utils - INFO: Данные из файла переведены в Python-объект
+2025-12-18 13:17:07,689 - utils - DEBUG: Функция возвращает список транзакций
+2025-12-18 13:17:07,692 - utils - ERROR: Файл не найден
