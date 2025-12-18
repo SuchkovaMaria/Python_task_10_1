@@ -2,7 +2,9 @@ import logging
 import os
 from typing import Union
 
-os.chdir(r'C:\\Users\\Rabota\\PycharmProjects\\Python_task')
+current_dir = os.getcwd()
+absolute_path = os.path.join(current_dir, "..")
+os.chdir(absolute_path)
 logger = logging.getLogger('mask')
 logger.setLevel(logging.DEBUG)
 file_handler_mask = logging.FileHandler('logs/mask.log', mode='w', encoding='utf-8')

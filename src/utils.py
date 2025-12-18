@@ -2,7 +2,9 @@ import json
 import logging
 import os
 
-os.chdir(r'C:\\Users\\Rabota\\PycharmProjects\\Python_task')
+current_dir = os.getcwd()
+absolute_path = os.path.join(current_dir, "..")
+os.chdir(absolute_path)
 logger = logging.getLogger('utils')
 logger.setLevel(logging.DEBUG)
 file_handler_utils = logging.FileHandler('logs/utils.log', mode='w', encoding='utf-8')
