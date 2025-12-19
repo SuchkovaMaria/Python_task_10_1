@@ -17,10 +17,8 @@ def convertions_json_in_list(path_to_file):
     """Функция получения списка транзакций из файла json"""
     try:
         with open(path_to_file, "r", encoding="utf-8") as file:
-            file_operations = file.read()
-        logger.debug(f"Функция открыла файл по  пути: {path_to_file}")
-        list_transactions = json.loads(file_operations)
-        logger.info("Данные из файла переведены в Python-объект")
+            list_transactions = json.load(file)
+        logger.info("Данные из файла загружены в Python-объект")
     except FileNotFoundError:
         logger.error("Файл не найден")
         print("Файл не найден")
