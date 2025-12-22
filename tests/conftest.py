@@ -1112,3 +1112,32 @@ def response_1():
         "date": "2025-12-14",
         "result": 655053.842628,
     }
+
+
+@pytest.fixture
+def dict_csv_1():
+    return [
+        {
+            "id;state;date;amount;currency_name;currency_code;from;to;description": "650703;EXECUTED;2023-09-05T11:30:32Z;16210;Sol;PEN;РЎС‡РµС‚ 58803664561298323391;РЎС‡РµС‚ 39745660563456619397;РџРµСЂРµРІРѕРґ РѕСЂРіР°РЅРёР·Р°С†РёРё"
+        },
+        {
+            "id;state;date;amount;currency_name;currency_code;from;to;description": "3598919;EXECUTED;2020-12-06T23:00:58Z;29740;Peso;COP;Discover 3172601889670065;Discover 0720428384694643;РџРµСЂРµРІРѕРґ СЃ РєР°СЂС‚С‹ РЅР° РєР°СЂС‚Сѓ"
+        },
+    ]
+
+
+@pytest.fixture
+def dict_xlsx_1():
+    return [
+        {
+            "id": 650703.0,
+            "state": "EXECUTED",
+            "date": "2023-09-05T11:30:32Z",
+            "amount": 16210.0,
+            "currency_name": "Sol",
+            "currency_code": "PEN",
+            "from": "Счет 58803664561298323391",
+            "to": "Счет 39745660563456619397",
+            "description": "Перевод организации",
+        }
+    ]
