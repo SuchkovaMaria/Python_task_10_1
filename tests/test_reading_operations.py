@@ -39,25 +39,24 @@ def test_reading_fin_operations_csv_3():
     mock_csv.assert_called_once()
 
 
-@patch("src.reading_operations.pd.read_excel")
+@patch("pandas.read_excel")
 def test_reading_fin_operations_xlsx_1(mock_xlsx, dict_xlsx_1):
-    dir = os.getcwd()
-    absolute_path = os.path.join(dir, "..")
-    os.chdir(absolute_path)
-    path_to_direct = os.path.dirname(__file__)
-    path_to_file_2 = os.path.join(path_to_direct, "..", "data", "transactions_excel.xlsx")
     mock_xlsx.return_value.to_dict.return_value = dict_xlsx_1
-    assert reading_fin_operations_xlsx(path_to_file_2) == dict_xlsx_1
+    assert reading_fin_operations_xlsx('') == dict_xlsx_1
     mock_xlsx.assert_called_once()
 
 
-@patch("src.reading_operations.pd.read_excel")
+@patch("pandas.read_excel")
 def test_reading_fin_operations_xlsx_2(mock_xlsx, dict_xlsx_1):
-    dir = os.getcwd()
-    absolute_path = os.path.join(dir, "..")
-    os.chdir(absolute_path)
-    path_to_direct = os.path.dirname(__file__)
-    path_to_file_2 = os.path.join(path_to_direct, "..", "data", "transactions_excel.xlsx")
     mock_xlsx.return_value = dict_xlsx_1
-    assert reading_fin_operations_xlsx(path_to_file_2) == {}
+    assert reading_fin_operations_xlsx('') == {}
     mock_xlsx.assert_called_once()
+
+
+def test_reading_fin_operations_xlsx_3(capsys):
+    reading_fin_operations_xlsx("")
+    captured = capsys.readouterr()
+    assert captured.out == "Возникла ошибка: файл не найден\n"
+    reading_fin_operations_xlsx({})
+    captured = capsys.readouterr()
+    assert captured.out == "Возникла ошибка: Invalid file path or buffer object type: <class 'dict'>\n"

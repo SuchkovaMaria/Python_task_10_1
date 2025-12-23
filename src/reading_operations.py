@@ -8,7 +8,7 @@ def reading_fin_operations_csv(path_to_file):
     list_dict_transactions = []
     try:
         with open(path_to_file, encoding="utf--8") as f:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f, delimiter=";")
             for row in reader:
                 list_dict_transactions.append(row)
     except FileNotFoundError as e:
