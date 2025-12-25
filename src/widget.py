@@ -1,7 +1,7 @@
 from typing import Union
+from src.decorators import log
 
 from src.mask import get_mask_account, get_mask_card_number
-
 
 def mask_account_card(card: Union[str]) -> Union[str]:
     """Функция для маскировки счета или карты"""
