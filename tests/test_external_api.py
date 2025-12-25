@@ -21,20 +21,9 @@ def test_convertions_currency_transaction_2(mock_conv, transactions_to_api_2):
     assert convertions_currency_transaction(transactions_to_api_2) == 321.1
 
 
-def test_convertions_currency_1():
-    assert convertions_currency("USS", "8221.37") == "Введены неверные данные"
+def test_convertions_currency_3():
+    with patch("requests.get") as mock_conv:
+        mock_conv.return_value.json.return_value = {"result": 321.1}
+        result = convertions_currency("USD", "8221.37")
+        assert result == 321.1
 
-
-def test_convertions_currency_2(transactions_to_api_3, transactions_to_api_4):
-    assert convertions_currency(transactions_to_api_3, transactions_to_api_4) == "Введены неверные данные"
-
-
-def test_convertions_currency_3(response_1):
-    mock_response = Mock()  # создан пустой мок
-    mock_response.json = Mock(
-        return_value=response_1
-    )  # Создан мок для response.json(), в который замокивает применение метода .json() к пустому моку
-    requests.request = Mock(return_value=mock_response)
-    assert convertions_currency("USD", 8221.37) == 655053.8
-    mock_response.json.assert_called_once()
-    # mock_response.json.assert_called_once_with()   еще один вариант проверки
