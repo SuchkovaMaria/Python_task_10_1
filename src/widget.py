@@ -1,4 +1,5 @@
 from typing import Union
+
 from src.mask import get_mask_account, get_mask_card_number
 
 
@@ -22,7 +23,7 @@ def mask_account_card(card: Union[str]) -> Union[str]:
 
     full_name_card = " ".join(name_card)
 
-    mask_number_card_test = mask_number_card.replace(' ','')
+    mask_number_card_test = mask_number_card.replace(" ", "")
     if mask_number_card_test.isalpha() is True:
         return mask_number_card
     else:

@@ -7,7 +7,7 @@ def get_mask_account(number_account: Union[str]) -> Union[str]:
     new_number_account = []
     mask_number_account = []
 
-    if number_account.isalpha() == False:
+    if number_account.isalpha() is False:
         for number in number_account:
             new_number_account.append(number)
 
@@ -34,7 +34,7 @@ def get_mask_card_number(number_card: Union[str]) -> Union[str]:
     mask_card_number = []
     count = 0
 
-    if number_card.isalpha() == False:
+    if number_card.isalpha() is False:
         lenght_number_card = len(number_card)
         if lenght_number_card == 16:
             for number in number_card:
@@ -63,5 +63,3 @@ def get_mask_card_number(number_card: Union[str]) -> Union[str]:
             return "Невернно введены данные"
     else:
         return "Введен неверный номер карты"
-
-
