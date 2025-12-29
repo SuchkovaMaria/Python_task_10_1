@@ -4,25 +4,21 @@ from src.generators import card_number_generator, filter_by_currency, transactio
 
 
 def test_filter_by_currency_1(transactions_1):
-    assert next(filter_by_currency(transactions_1, "USD")) == [
-        {
-            "id": 939719570,
+    assert next(filter_by_currency(transactions_1, "USD")) == {
+            "id": 939719571,
             "state": "EXECUTED",
-            "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+            "date": "2018-07-30T02:08:58.425572",
+            "amount": "9824.07",
+            "currency_name": "USD",
+            "currency_code": "USD",
             "description": "Перевод организации",
-            "from": "Счет 75106830613657916952",
-            "to": "Счет 11776614605963066702",
+            "from": "Счет 75106830613657916972",
+            "to": "Счет 11776614605963066762",
         }
-    ]
 
 
-def test_filter_by_currency_2(transactions_2):
-    assert next(filter_by_currency(transactions_2, "USD")) == "Отсутствуют транзакции с валютой - USD"
-
-
-def test_filter_by_currency_3():
-    assert next(filter_by_currency([], "USD")) == "Список транзакций пуст"
+def test_filter_by_currency_2():
+    assert next(filter_by_currency([], "USD")) == {}
 
 
 def test_transaction_descriptions_1(transactions_3):

@@ -21,6 +21,7 @@ def reading_fin_operations_xlsx(path_to_file):
 
     try:
         excel_data = pd.read_excel(path_to_file)
+        excel_data.fillna(0)
         list_dict_transactions = excel_data.to_dict(orient="records")
     except FileNotFoundError:
         list_dict_transactions = {}
