@@ -6,10 +6,12 @@ from src.mask import get_mask_account, get_mask_card_number
 def mask_account_card(card: Union[str]) -> Union[str]:
     """Функция для маскировки счета или карты"""
 
+    if not isinstance(card, str):
+        return ""
     name_card = []
     list_card = card.split(sep=" ", maxsplit=3)
     for element in list_card:
-        if element.isdigit() is True:
+        if element.isdigit():
             number_card = element
         else:
             name_card.append(element)

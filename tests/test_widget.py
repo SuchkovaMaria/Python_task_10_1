@@ -12,11 +12,11 @@ def test_2_mask_account_card(account_card_2):
 
 
 def test_3_mask_account_card(account_card_3):
-    assert mask_account_card(account_card_3) == "Невернно введены данные"
+    assert mask_account_card(account_card_3) == 'Невернно введены данные'
 
 
 def test_4_mask_account_card(account_card_4):
-    assert mask_account_card(account_card_4) == "Невернно введены данные"
+    assert mask_account_card(account_card_4) == 'Невернно введены данные'
 
 
 @pytest.mark.parametrize(

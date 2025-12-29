@@ -1,44 +1,43 @@
+from collections.abc import Generator, Iterator
 from typing import Union
-from typing import Generator
 
 
 def filter_by_currency(
-    transactions: Union[list[dict[str, int, dict]]], valuta: Union[str]
-) -> Union[list[dict[str, int]], str]:
+    transactions: Union[list[dict]], valuta: Union[str]
+) -> Iterator:
     """Функция для фильтрации транзакций по указанной валюте"""
 
-    list_dict_1 = []
-
-    lenght_transactions = len(transactions)
-    if lenght_transactions == 0:
-        yield "Список транзакций пуст"
-    else:
-        for i_dict in transactions:
-            for key, value in i_dict.items():
-                if key == "operationAmount":
-                    for key_oper, value_oper in value.items():
-                        if key_oper == "currency":
-                            for key_currency, value_currency in value_oper.items():
-                                if key_currency == "name" and value_currency == valuta:
-                                    list_dict_1.append(i_dict)
-                                    yield list_dict_1
-    if len(list_dict_1) == 0:
-        yield f"Отсутствуют транзакции с валютой - {valuta}"
-
-
-def transaction_descriptions(transactions: Union[list[dict[str, int, dict]]]) -> Union[str]:
-    """Функция для вывода описания транзакции"""
     try:
+        lenght_transactions = len(transactions)
+        if lenght_transactions == 0:
+            raise ValueError("Список транзакций пуст")
+        else:
+            for i_dict in transactions:
+                for key, value in i_dict.items():
+                    if key == "currency_code" and value == valuta:
+                        yield i_dict
+    except Exception:
+        yield {}
+
+
+def transaction_descriptions(transactions) :
+    """Функция для вывода описания транзакции"""
+
+    try:
+        lenght_transactions = len(transactions)
+        if lenght_transactions == 0:
+            raise ValueError("Список транзакций пуст")
+
         lenght_transactions = len(transactions)
         if lenght_transactions != 0:
             for i_dict in transactions:
                 for key, value in i_dict.items():
                     if key == "description":
                         yield value
-        elif lenght_transactions == 0:
-            yield "Список транзакций пуст"
+    except ValueError:
+        yield "Список транзакций пуст"
     except StopIteration:
-        yield "Итерации завершены"
+        yield ""
 
 
 def card_number_generator(start: Union[int], stop: Union[int]) -> Union[Generator[str, None, None]]:
